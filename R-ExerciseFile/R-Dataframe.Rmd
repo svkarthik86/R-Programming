@@ -1,0 +1,98 @@
+---
+title: "R Notebook"
+author: "Karthik V"
+date: '2022-07-06'
+output: html_notebook
+---
+# Data Frame in R
+The Data Frame in R is a table or two-dimensional data structure. 
+In R Data Frames, records stored in row and columns, and we can access the elements using the row index and column index. 
+The following are some of the characteristics of the R Data Frame:
+
+- A data frame in R is a list of variables, and it must contain the same number of rows with unique row names.
+- The Column Names should not be Empty 
+- Although r data frame supports duplicate column names by using check.names = FALSE, 
+- It is always preferable to use unique Column names.
+- The data stored in it can be Character type, Numerical type, or Factors.
+
+we will going to learn how to Create a Data Frame, How to Access Columns and Rows. And Manipulate the individual or Row level or Column level Elements, Creating Named Data Frames. Also explains some of the important functions supported by the Data Frame in R Programming.
+### How to Create Data Frame in R
+This example create a Data Frame in R Programming with a different element and the most common way to create is
+
+```{r}
+# create Data frame from Vector
+gender = c("Male", "Male","Female")  # character vector
+height = c(152, 171.5, 165) # double vector
+weight = c(81,93, 78)## double vector
+Age = c(42L,38L,26L)#integer vector
+# Create the data frame.
+BMI <- data.frame(gender,height,weight,Age,stringsAsFactors = TRUE,
+                  check.names=FALSE,row.names = c('a','b','c'))
+print(BMI)
+
+```
+# parameter check
+```{r}
+is.factor(BMI$gender)
+
+row.names(BMI)
+rownames(BMI)
+
+
+```
+
+### type and class check
+```{r}
+cat(typeof(BMI),class(BMI))
+```
+## Access the Data Frame columns 
+
+### using $ : dataframeobject$col_name
+```{r}
+BMI$gender
+BMI$height
+BMI
+```
+### using [[]] : dataframe_object[["col_name"]]
+```{r}
+BMI[['gender']]
+BMI[["height"]][2:3]
+```
+### accessing Data frame row and colums : dataframe_obj[row,column]
+```{r}
+# using label index
+BMI[,c('height','weight')]
+#using integer index
+BMI[1:2,2:3]
+```
+### Functionon Dataframe
+- typeof(DataFrame): Returns the datatype. Since it is a kind of list, it returns a list
+- class(DataFrame): The class of it.
+- length(DataFrame): Count the number of items (columns) in it
+- nrow(DataFrame): Returns the total number of Rows present.
+- ncol(DataFrame): The total number of Columns.
+- dim(DataFrame): The total number of Rows and Columns present.
+```{r}
+#length(DataFrame): Count the number of items (columns) in it
+length(BMI)
+nrow(BMI)
+ncol(BMI)
+dim(BMI)
+prod(dim(BMI)) # total number of elements
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
